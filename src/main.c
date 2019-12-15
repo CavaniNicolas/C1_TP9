@@ -4,6 +4,7 @@
 
 #include "calculator.h"
 #include "fic2LC.h"
+#include "calcSDL.h"
 
 /*
 const char * p;
@@ -37,14 +38,19 @@ int main(){
 	calcul(a,b,delta,op,filename);
 
 
-	int yes=0;
+	int yes=0; int taille=-1;
 	printf("\nAfficher sa courbe ? Y:1 N:0 ?\n :");
 	scanf("%d",&yes);
 	if (yes==1){
 		liste_2pointeurs liste;
 		liste = creer_liste();
-		fichier_dans_la_liste(&liste,filename);
-		afficher_listeTF(liste);
+		taille=fichier_dans_la_liste(&liste,filename);
+		printf("nbr de valeurs: %d\n",taille);
+		
+		//afficher_listeTF(liste);
+
+		init_SDL(liste, taille, a, b, op);
+
 		liberer_liste(&liste);
 	}
 

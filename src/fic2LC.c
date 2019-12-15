@@ -10,19 +10,23 @@ liste_2pointeurs creer_liste(){
 	return liste;
 }
 
-void fichier_dans_la_liste(liste_2pointeurs * liste, char * filename){
+int fichier_dans_la_liste(liste_2pointeurs * liste, char * filename){
 	FILE * file = NULL;
 	file = fopen(filename,"r");
 	if (file==NULL){
 		printf("fichier inexistant\n");
+		return -1;
 	}
 	else{
+		int taille=0;
 		//printf("on lit dans le fichier\n");
 		char ligne[255];
 		while (fgets(ligne,255,file)!=NULL){
 			inserer_char_dans_liste(ligne,liste);
+			taille++;
 		}
 		fclose(file);
+		return taille;
 	}
 }
 

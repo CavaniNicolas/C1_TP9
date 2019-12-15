@@ -20,8 +20,8 @@ liste_2pointeurs creer_liste();
 
 // fichier_dans_la_liste()
 // In : liste_2pointeurs *, char *
-// Out: le fichier ecrit dans la liste
-void fichier_dans_la_liste(liste_2pointeurs *, char *);
+// Out: la taille de la liste chainée, -1 si erreur / (la liste a evidemment été remplie)
+int fichier_dans_la_liste(liste_2pointeurs *, char *);
 
 // inserer_char_dans_liste()
 // In : char *, liste_2pointeurs *

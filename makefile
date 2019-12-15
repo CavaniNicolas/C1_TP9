@@ -1,6 +1,6 @@
 #option
-CFLAGS = -Wall -Wextra -g -MMD
-LIB = -lm
+CFLAGS = -Wall -Wextra -g -MMD 
+LIB = -lm -lSDL2 -lSDL2_ttf
 
 SRC = $(wildcard src/*.c)
 OBJ = $(patsubst src/%.c,build/%.o,$(SRC))
