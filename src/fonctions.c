@@ -5,41 +5,57 @@
 #include "calculator.h"
 
 const char * OPER_NAMES[]={"x","sin(x)","cos(x)","log(x)","exp(x)",NULL};
+double (*OPER_FN [])(double) = { erreur, identite, sin, cos, log, exp };
 
 OP identification(char * op){
-	int i=0;
+	int i=1;
 	while (OPER_NAMES[i]!=NULL){
 		if (0==strcmp(op,OPER_NAMES[i]))
 			return i;
 		i++;
 	}
-	return -1;
+	return NONE;
+}
+
+
+double evalp(double x, OP op){
+	return OPER_FN[op](x);
+}
+
+double identite(double x){
+	return x;
+}
+
+double erreur (double x){
+	printf("fonction erreur\n");
+	return 0;
 }
 
 double evalf(double x, OP op){
 	double val;
 	switch (op){
-		case 0:
+		case ID:
 			val=x;
 			break;
-		case 1:
+		case SIN:
 			val=sin(x);
 			break;
-		case 2:
+		case COS:
 			val=cos(x);
 			break;
-		case 3:
+		case LOG:
 			val=log(x);
 			break;
-		case 4:
+		case EXP:
 			val=exp(x);
 			break;
-		case -1:
-			return -1;
+		case NONE:
+			return 0;
 	}
-
 	return val;
 }
+
+
 
 void calcul(double a, double b, double delta, OP op, char * filename){
 	if (op==NONE){

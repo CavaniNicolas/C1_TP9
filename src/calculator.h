@@ -4,7 +4,7 @@
 
 
 typedef enum ope{
-	NONE = -1, ID, SIN, COS, LOG, EXP
+	NONE, ID, SIN, COS, LOG, EXP
 } OP;
 
 extern char const * OPER_NAMES[];
@@ -33,6 +33,16 @@ void saisir_operation(char *);
 
 // saisie de l'interval et de delta (utilise saisir_chiffre())
 void saisir_interval(double *, double *, double *);
+
+
+
+
+double evalp(double, OP);
+
+double identite(double);
+
+double erreur (double);
+
 
 /*Fin_Declarations_Fonctions*/
 

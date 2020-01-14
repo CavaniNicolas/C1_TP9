@@ -70,7 +70,6 @@ int init_SDL(liste_2pointeurs liste, int taille, double a, double b, OP op){
 	displayGraph(g, liste, taille, a, b, op);
 
 	while (running) {
-
 		while (SDL_PollEvent(&event))
 		{
 			switch(event.type)
@@ -85,6 +84,12 @@ int init_SDL(liste_2pointeurs liste, int taille, double a, double b, OP op){
 							// g.width  = event.window.data1;
 							// g.height = event.window.data2;
 							// printf("Size : %d%d\n", g.width, g.height);
+							break;
+						case SDL_WINDOWEVENT_MOVED:
+							SDL_RenderPresent(g.renderer);
+							break;
+						default:
+							SDL_RenderPresent(g.renderer);
 							break;
 					}   
 					break;
